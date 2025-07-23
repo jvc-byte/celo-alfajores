@@ -63,6 +63,9 @@ forge script script/Storage.s.sol --rpc-url <YOUR_RPC_URL> --private-key <YOUR_P
 - The project is modular and easy to extend for more complex contracts.
 - The test file demonstrates both unit and fuzz testing.
 - The script file is ready for mainnet/testnet deployment with minimal changes.
+- Deployer: 0xa67b8a9C8BBaA4100b790ebb33b5F7C4E3c73290
+- Deployed to: 0xa2C9A02a299503f8B8b1D810E7f459878EB5907B
+- Transaction hash: 0x9e1c53d71ce64eac90cfcf02b3a2e52c7b1393ec144756e4ea2d979e84b6a8ef
 
 ## License
 

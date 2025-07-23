@@ -2,6 +2,15 @@
 
 This project demonstrates how to use Foundry to develop, test, and deploy a simple `Storage` smart contract. The contract allows storing and retrieving a single `uint256` value. The repository is organized for clarity and ease of use, with scripts and tests following best practices.
 
+## License Effect
+
+This project uses the `GPL-3.0` license for the smart contract (`src/Storage.sol`). This means:
+
+- Anyone can use, modify, and distribute the contract code.
+- Any derivative or deployed version must also be open-sourced under the same GPL-3.0 license.
+- Closed-source or proprietary use of derivatives is not allowed.
+- This ensures improvements and changes remain open and free for the community.
+
 ## Project Structure
 
 - `src/Storage.sol` — The main Storage contract.
@@ -69,4 +78,4 @@ forge script script/Storage.s.sol --rpc-url <YOUR_RPC_URL> --private-key <YOUR_P
 
 ## License
 
-MIT
+GPL-3.0

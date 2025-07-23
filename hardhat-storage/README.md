@@ -77,4 +77,4 @@ PRIVATE_KEY=your_private_key
 
 ## License
 
-MIT
+GPL-3.0

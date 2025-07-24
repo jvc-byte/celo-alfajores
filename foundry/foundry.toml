@@ -1,0 +1,10 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+[rpc_endpoints]
+alfajores = "https://alfajores-forno.celo-testnet.org"
+
+[etherscan]
+alfajores = { key = "${ETHERSCAN_API_KEY}", url = "https://explorer.celo.org/alfajores/api", chain = 44787 }

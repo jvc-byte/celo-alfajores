@@ -1,52 +1,112 @@
-# Celo Alfajores Storage Projects
+# Week3 Contract deployment on Celo Alfajores Testnet
 
-This repository contains two separate implementations of a simple Storage smart contract project, each using a different Ethereum development framework:
+Therein in this project is the deployment of a contract using Foundry and Hardhat on the Celo Alfajores Testnet.
 
-## License Effect
+## Project Structure
 
-The smart contracts in this repository use the `GPL-3.0` license (see the SPDX identifier in the contract files). This means:
+```
+├── hardhat/          # Hardhat project folder
+├── foundry/          # Foundry project folder
+└── README.md         # This file
+```
 
-- Anyone can use, modify, and distribute the contract code.
-- Any derivative or deployed version must also be open-sourced under the same GPL-3.0 license.
-- Closed-source or proprietary use of derivatives is not allowed.
-- This ensures improvements and changes remain open and free for the community.
+## Storage Contract
 
-## Folders
+A simple smart contract that allows you to:
+- Store a uint256 value
+- Retrieve the stored value
 
-### 1. `foundry-storage`
+## Prerequisites
 
-- **Framework:** [Foundry](https://book.getfoundry.sh/)
-- **Purpose:** Demonstrates contract development, testing, and deployment using Foundry tools (`forge`, `cast`).
-- **Structure:**
-  - `src/Storage.sol`: The Storage contract.
-  - `script/Storage.s.sol`: Deployment script for Foundry.
-  - `test/Storage.t.sol`: Unit and fuzz tests for the contract.
-- **Usage:**
-  - Build: `forge build`
-  - Test: `forge test`
-  - Deploy: `forge script ...`
+1. Node.js and npm installed
+2. Foundry installed ([Installation Guide](https://book.getfoundry.sh/getting-started/installation))
+3. Celo wallet with CELO tokens for Alfajores testnet
+4. Get testnet CELO from [Celo Faucet](https://faucet.celo.org/)
 
-### 2. `hardhat-storage`
+## Setup
 
-- **Framework:** [Hardhat](https://hardhat.org/)
-- **Purpose:** Demonstrates contract development, testing, and deployment using Hardhat, including Hardhat Ignition for deployment modules.
-- **Structure:**
-  - `contracts/Storage.sol`: The Storage contract.
-  - `test/Storage.ts`: Tests for the contract (TypeScript).
-  - `ignition/modules/Storage.ts`: Ignition deployment module.
-  - `hardhat.config.ts`: Hardhat configuration.
-- **Usage:**
-  - Install dependencies: `npm install`
-  - Compile: `npx hardhat compile`
-  - Test: `npx hardhat test`
-  - Deploy: `npx hardhat ignition deploy ...`
+### Hardhat Setup
+```bash
+cd hardhat
+npm install
+npx hardhat vars set PRIVATE_KEY
+npx hardhat vars set ETHERSCAN_API_KEY
+```
 
-## Why Two Folders?
+### Foundry Setup
+```bash
+cd foundry
+forge init --force .
+cp .env.example .env
+# Edit .env with your private key and API key
+cp ../hardhat/contracts/Storage.sol src/
+```
 
-- **Comparison:** This setup allows you to compare workflows, tooling, and best practices between Foundry and Hardhat.
-- **Learning:** Useful for developers learning both ecosystems or migrating between them.
-- **Modularity:** Each folder is self-contained and can be used independently.
+## Deployment Commands
 
-## License
+### Hardhat Deployment
+```bash
+cd hardhat
+npx hardhat ignition deploy ./ignition/modules/Storage.js --network alfajores
+npx hardhat verify --network alfajores <CONTRACT_ADDRESS>
+```
 
-GPL-3.0
+### Foundry Deployment
+```bash
+cd foundry
+forge script script/DeployStorage.s.sol:DeployStorage --rpc-url alfajores --broadcast --verify
+```
+
+## 🚀 Deployed Contract Addresses
+
+### Hardhat Deployment
+- **Contract Address**: `0xf274614C4806300B43e29Cb8639Afd20dB5cEDDB`
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xf274614C4806300B43e29Cb8639Afd20dB5cEDDB#code)
+
+### Foundry Deployment  
+- **Contract Address**: `0x4742a10e05a4f82472accf3c369504fe3f39e4ed`
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x4742a10e05a4f82472accf3c369504fe3f39e4ed#code)
+
+## Testing the Contracts
+
+### Using Hardhat Console
+```bash
+cd hardhat
+npx hardhat console --network alfajores
+
+# In console:
+const Storage = await ethers.getContractFactory("Storage");
+const storage = Storage.attach("0xf274614C4806300B43e29Cb8639Afd20dB5cEDDB");
+await storage.store(123);
+await storage.retrieve(); // Returns 123
+```
+
+### Using Foundry Cast
+```bash
+# Read current value
+cast call 0x4742a10e05a4f82472accf3c369504fe3f39e4ed "retrieve()" --rpc-url alfajores
+
+# Store a new value
+cast send 0x4742a10e05a4f82472accf3c369504fe3f39e4ed "store(uint256)" 456 --rpc-url alfajores --private-key $PRIVATE_KEY
+```
+
+## Network Information
+
+- **Network**: Celo Alfajores Testnet
+- **Chain ID**: 44787
+- **RPC URL**: https://alfajores-forno.celo-testnet.org
+- **Explorer**: https://alfajores.celoscan.io/
+- **Faucet**: https://faucet.celo.org/
+
+## Key Learnings
+
+### Issues Resolved
+1. **Hardhat Verification**: Added `chainId: 44787` to etherscan customChains
+2. **Foundry Reserved Keywords**: Renamed `storage` variable to `storageContract`
+3. **Private Key Format**: Handled both "0x" prefixed and non-prefixed private keys
+
+## Resources
+
+- [Celo Documentation](https://docs.celo.org/)
+- [Hardhat Documentation](https://hardhat.org/docs)
+- [Foundry Documentation](https://book.getfoundry.sh/)

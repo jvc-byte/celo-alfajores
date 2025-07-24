@@ -64,8 +64,8 @@ forge script script/DeployStorage.s.sol:DeployStorage --rpc-url alfajores --broa
 - **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xDF6d97A1C84699B2b8C6C9ce6b44650D3B420B8c#code)
 
 ### Foundry Deployment  
-- **Contract Address**: `0x4742a10e05a4f82472accf3c369504fe3f39e4ed`
-- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x4742a10e05a4f82472accf3c369504fe3f39e4ed#code)
+- **Contract Address**: `0x4B6fd16f3175FD822FeEFC7bB0Da6c4E54d8259b`
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0x4B6fd16f3175FD822FeEFC7bB0Da6c4E54d8259b#code)
 
 ## Testing the Contracts
 

@@ -1,6 +1,14 @@
-# Sample Hardhat Project
+# Hardhat Storage Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+This folder contains a simple Storage smart contract project built with Hardhat. It demonstrates how to:
+
+- Write a basic Solidity contract (`Storage.sol`) that stores and retrieves a value.
+- Test the contract using Hardhat's testing framework.
+- Deploy the contract using Hardhat Ignition modules.
+
+The project is ideal for learning and comparing Hardhat's workflow with other Ethereum development tools.
+
+## Usage
 
 Try running some of the following tasks:
 
@@ -9,5 +17,5 @@ npx hardhat help
 npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
+npx hardhat ignition deploy ./ignition/modules/Storage.js
 ```

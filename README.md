@@ -60,8 +60,8 @@ forge script script/DeployStorage.s.sol:DeployStorage --rpc-url alfajores --broa
 ## 🚀 Deployed Contract Addresses
 
 ### Hardhat Deployment
-- **Contract Address**: `0xf274614C4806300B43e29Cb8639Afd20dB5cEDDB`
-- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xf274614C4806300B43e29Cb8639Afd20dB5cEDDB#code)
+- **Contract Address**: `0xDF6d97A1C84699B2b8C6C9ce6b44650D3B420B8c`
+- **Explorer**: [View on Celoscan](https://alfajores.celoscan.io/address/0xDF6d97A1C84699B2b8C6C9ce6b44650D3B420B8c#code)
 
 ### Foundry Deployment  
 - **Contract Address**: `0x4742a10e05a4f82472accf3c369504fe3f39e4ed`

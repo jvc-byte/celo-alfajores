@@ -57,7 +57,7 @@ cd foundry
 forge script script/DeployStorage.s.sol:DeployStorage --rpc-url alfajores --broadcast --verify
 ```
 
-## 🚀 Deployed Contract Addresses
+## Deployed Contract Addresses
 
 ### Hardhat Deployment
 - **Contract Address**: `0xDF6d97A1C84699B2b8C6C9ce6b44650D3B420B8c`

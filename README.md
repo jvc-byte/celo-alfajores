@@ -1,6 +1,6 @@
 # Week3 Contract deployment on Celo Alfajores Testnet
 
-Therein in this project is the deployment of a contract using Foundry and Hardhat on the Celo Alfajores Testnet.
+In this project, is the code for deploying a Storage contract using Foundry and Hardhat on the Celo Alfajores Testnet.
 
 ## Project Structure
 
@@ -76,7 +76,7 @@ npx hardhat console --network alfajores
 
 # In console:
 const Storage = await ethers.getContractFactory("Storage");
-const storage = Storage.attach("0xf274614C4806300B43e29Cb8639Afd20dB5cEDDB");
+const storage = Storage.attach("0x4B6fd16f3175FD822FeEFC7bB0Da6c4E54d8259b");
 await storage.store(123);
 await storage.retrieve(); // Returns 123
 ```
@@ -84,10 +84,10 @@ await storage.retrieve(); // Returns 123
 ### Using Foundry Cast
 ```bash
 # Read current value
-cast call 0x4742a10e05a4f82472accf3c369504fe3f39e4ed "retrieve()" --rpc-url alfajores
+cast call 0x4B6fd16f3175FD822FeEFC7bB0Da6c4E54d8259b "retrieve()" --rpc-url alfajores
 
 # Store a new value
-cast send 0x4742a10e05a4f82472accf3c369504fe3f39e4ed "store(uint256)" 456 --rpc-url alfajores --private-key $PRIVATE_KEY
+cast send 0x4B6fd16f3175FD822FeEFC7bB0Da6c4E54d8259b "store(uint256)" 456 --rpc-url alfajores --private-key $PRIVATE_KEY
 ```
 
 ## Network Information
@@ -101,9 +101,8 @@ cast send 0x4742a10e05a4f82472accf3c369504fe3f39e4ed "store(uint256)" 456 --rpc-
 ## Key Learnings
 
 ### Issues Resolved
-1. **Hardhat Verification**: Added `chainId: 44787` to etherscan customChains
-2. **Foundry Reserved Keywords**: Renamed `storage` variable to `storageContract`
-3. **Private Key Format**: Handled both "0x" prefixed and non-prefixed private keys
+
+1. **Private Key Format**: Ensured the private key in your hardhat Configuration variables starts with 0x to avoid deployment errors.
 
 ## Resources
 
